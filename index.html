@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FitAura — Streetwear and Essentials</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/index.css" />
+    <link rel="stylesheet" href="assets/css/fitaura-responsive.css" />
+    <style>
+        :root{--accent:#0ea5a4;--accent-light:#20c997;--bg:linear-gradient(135deg,#ffffff 0%,#f9f9f9 100%);--text:#000;--text-secondary:#6f6f6f;--border:#e5e5e5}
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;position:relative}
+        body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 20% 80%, rgba(14,165,164,0.03) 0%, transparent 50%),radial-gradient(circle at 80% 20%, rgba(32,201,151,0.03) 0%, transparent 50%);pointer-events:none;z-index:-1}
+
+        /* Sticky Navigation */
+        header{position:sticky;top:0;background:rgba(255,255,255,0.8);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 20px;gap:12px}
+        .brand{display:flex;gap:12px;align-items:center}
+        .logo{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-light));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px}
+        .brand-text{display:flex;flex-direction:column}
+        .brand-text strong{font-size:15px}
+        .brand-text small{font-size:11px;color:var(--text-secondary)}
+
+        nav{display:flex;gap:8px}
+        .nav-link{color:var(--text);text-decoration:none;padding:8px 12px;border-radius:8px;font-size:14px;transition:background 0.3s}
+        .nav-link:hover{background:#f5f5f5}
+        .nav-link.active{color:var(--accent);font-weight:500}
+
+        .container{max-width:1100px;margin:0 auto;padding:40px 20px}
+        main{margin:48px 0}
+
+        /* Hero Section */
+        .hero-section{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:100vh;margin-bottom:40px;padding:32px 20px;background:linear-gradient(135deg,#e3e8f5 0%,#fff 100%);border-radius:16px;box-shadow:0 4px 32px rgba(26,35,126,0.07);overflow:hidden}
+        .hero-section::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(45deg, rgba(14,165,164,0.1) 0%, rgba(32,201,151,0.1) 100%);z-index:1}
+        .hero-section img{position:absolute;top:50%;right:10%;transform:translateY(-50%);width:40%;max-width:400px;object-fit:cover;border-radius:12px;box-shadow:0 10px 30px rgba(13,148,136,0.15);z-index:2;animation:float 6s ease-in-out infinite}
+        .hero-section .content{position:relative;z-index:2;text-align:center;max-width:600px}
+        .hero-section h1{margin:0 0 16px 0;font-size:clamp(48px,8vw,72px);color:var(--text);font-weight:800;letter-spacing:-1px;animation:slideUp 1s ease-out;background:linear-gradient(135deg,var(--accent),var(--accent-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero-section p{margin:16px 0;color:#475569;line-height:1.6;font-size:18px;animation:slideUp 1s ease-out 0.2s both}
+        .hero-section .btn-group{display:flex;gap:12px;margin-top:24px;justify-content:center;animation:slideUp 1s ease-out 0.4s both}
+
+        .btn{display:inline-block;padding:12px 24px;background:var(--accent);color:white;border-radius:8px;text-decoration:none;font-weight:500;transition:all 0.3s;font-size:15px;border:none;cursor:pointer}
+        .btn:hover{background:var(--accent-light);transform:scale(1.05)}
+        .btn-outline{background:transparent;border:2px solid var(--accent);color:var(--accent)}
+        .btn-outline:hover{background:var(--accent);color:white}
+
+        /* Features Section */
+        .features-section{margin:60px 0}
+        .features-section h2{font-size:32px;margin-bottom:40px;text-align:center;font-weight:700;color:var(--text);background:linear-gradient(135deg,var(--accent),var(--accent-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;margin-bottom:40px}
+        .feature-card{position:relative;padding:32px 24px;background:linear-gradient(135deg,#ffffff 0%,#f9f9f9 100%);border-radius:20px;border:1px solid rgba(14,165,164,0.1);box-shadow:0 4px 20px rgba(26,35,126,0.06);transition:all 0.4s ease;overflow:hidden}
+        .feature-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,var(--accent),var(--accent-light));transform:scaleX(0);transition:transform 0.4s ease}
+        .feature-card:hover::before{transform:scaleX(1)}
+        .feature-card:hover{background:linear-gradient(135deg,#f0f9ff 0%,#e0f2fe 100%);transform:translateY(-8px);box-shadow:0 12px 40px rgba(26,35,126,0.15);border-color:var(--accent)}
+        .feature-card h3{margin:0 0 16px 0;color:var(--accent);font-size:20px;font-weight:600;position:relative;z-index:1}
+        .feature-card p{margin:0;color:#475569;font-size:15px;line-height:1.7;position:relative;z-index:1}
+        .feature-card:hover h3{color:#0ea5a4}
+        .feature-card:hover p{color:#334155}
+
+        /* CTA Section */
+        .cta-section{background:linear-gradient(135deg,var(--accent) 0%,#3949ab 100%);padding:80px 20px;border-radius:20px;text-align:center;color:white;margin:60px 0;box-shadow:0 8px 40px rgba(26,35,126,0.15);position:relative;overflow:hidden;width:100vw;margin-left:calc(-50vw + 50%);margin-right:calc(-50vw + 50%);box-sizing:border-box;}
+        .cta-section::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 30% 70%, rgba(255,255,255,0.1) 0%, transparent 50%),radial-gradient(circle at 70% 30%, rgba(255,255,255,0.05) 0%, transparent 40%);z-index:1}
+        .cta-section h2{margin:0 0 20px 0;font-size:clamp(32px,6vw,48px);font-weight:800;position:relative;z-index:2;animation:slideUp 1s ease-out;}
+        .cta-section p{margin:0 0 32px 0;font-size:18px;opacity:0.95;max-width:600px;margin-left:auto;margin-right:auto;position:relative;z-index:2;animation:slideUp 1s ease-out 0.2s both;}
+        .cta-section .btn{background:white;color:var(--accent);padding:16px 40px;border-radius:12px;text-decoration:none;font-weight:700;font-size:18px;transition:all 0.3s ease;box-shadow:0 4px 16px rgba(26,35,126,0.2);position:relative;z-index:2;animation:slideUp 1s ease-out 0.4s both;}
+        .cta-section .btn:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 8px 32px rgba(26,35,126,0.3);background:linear-gradient(135deg,#f8fafc,#e2e8f0);}
+
+        /* Floating shapes for CTA */
+        .cta-floating-shapes{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;}
+        .cta-shape-1{position:absolute;top:20%;left:10%;width:40px;height:40px;background:linear-gradient(45deg,rgba(255,255,255,0.2),rgba(255,255,255,0.1));border-radius:50%;animation:float-slow 8s ease-in-out infinite;}
+        .cta-shape-2{position:absolute;top:30%;right:15%;width:30px;height:30px;background:linear-gradient(45deg,rgba(255,255,255,0.15),rgba(255,255,255,0.05));border-radius:8px;animation:float-medium 6s ease-in-out infinite reverse;}
+        .cta-shape-3{position:absolute;bottom:25%;left:20%;width:60px;height:60px;background:linear-gradient(45deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05));clip-path:polygon(50% 0%, 0% 100%, 100% 100%);animation:float-fast 5s ease-in-out infinite;}
+        .cta-shape-4{position:absolute;top:50%;right:25%;width:20px;height:20px;background:linear-gradient(45deg,rgba(255,255,255,0.2),rgba(255,255,255,0.1));border-radius:50%;animation:float-slow 10s ease-in-out infinite reverse;}
+        .cta-shape-5{position:absolute;bottom:20%;right:10%;width:35px;height:35px;background:linear-gradient(45deg,rgba(255,255,255,0.15),rgba(255,255,255,0.05));border-radius:50%;animation:float-medium 8s ease-in-out infinite;}
+
+        /* Products Section */
+        .products-section{margin:80px 0}
+        .products-section h2{font-size:32px;margin-bottom:40px;text-align:center;font-weight:700;color:var(--text)}
+        .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px}
+        .product-card{background:linear-gradient(135deg,#ffffff 0%,#f9f9f9 100%);border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(26,35,126,0.08);transition:all 0.3s ease;animation:slideUp 1s ease-out forwards;opacity:0;animation-fill-mode:forwards;animation-play-state:paused;animation-delay:calc(var(--delay) * 0.2s);animation-duration:0.8s}
+        .product-card:hover{transform:translateY(-8px);box-shadow:0 12px 40px rgba(26,35,126,0.12)}
+        .product-card img{width:100%;height:200px;object-fit:cover;transition:transform 0.3s ease}
+        .product-card:hover img{transform:scale(1.05)}
+        .product-card .content{padding:20px;text-align:center}
+        .product-card h3{margin:0 0 8px 0;font-size:20px;color:var(--text);font-weight:600}
+        .product-card p{margin:0 0 16px 0;color:#6b7280;font-size:14px;line-height:1.5}
+        .product-card .price{font-size:18px;font-weight:700;color:var(--accent);margin-bottom:16px}
+        .product-card .btn{background:var(--accent);color:white;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:500;transition:all 0.3s}
+        .product-card .btn:hover{background:var(--accent-light);transform:scale(1.05)}
+
+        /* Fade in animation */
+        .fade-in{opacity:0;animation:fadeIn 0.8s ease-out forwards}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes float{0%,100%{transform:translateY(0px)}50%{transform:translateY(-10px)}}
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <div class="logo">FA</div>
+        <div class="brand-text">
+          <strong>FitAura</strong>
+          <small>Be the trend</small>
+        </div>
+      </div>
+
+      <nav style="display:flex;gap:8px;align-items:center;">
+        <a class="nav-link active" href="index.html">Home</a>
+        <a class="nav-link" href="shop.html">Shop</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="login.html">Login</a>
+      </nav>
+      <a href="signup.html" class="btn btn-primary btn-lg" style="margin-left:18px;box-shadow:0 4px 24px #0ea5a422;min-width:140px;text-align:center;padding:14px 28px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-light));font-weight:600;font-size:16px;">Sign Up</a>
+    </header>
+
+    <main style="display:flex;justify-content:center;align-items:center;min-height:calc(100vh - 80px);margin:0;padding:40px 20px;">
+      <section class="hero-section fade-in" style="display:flex;align-items:center;justify-content:center;min-height:100vh;padding:0;width:100%;">
+        <div class="content" style="max-width:600px;text-align:center;">
+          <h1>Streetwear & Essentials</h1>
+          <p>Discover timeless pieces that blend modern design with uncompromising comfort. FitAura brings you quality essentials and streetwear that make you feel confident and authentic.</p>
+          <div class="btn-group">
+            <a href="shop.html" class="btn">Shop Now</a>
+            <a href="about.html" class="btn btn-outline">Learn More</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div class="container">
+      <section class="features-section fade-in">
+        <h2>Why Choose FitAura?</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <h3>Premium Quality</h3>
+            <p>We source the finest materials and maintain rigorous quality standards in every piece we create.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Timeless Design</h3>
+            <p>Our pieces are designed to last, blending contemporary style with classic appeal that never goes out of fashion.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Comfort First</h3>
+            <p>Every item is crafted with your comfort in mind, ensuring you look and feel great all day long.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Sustainable</h3>
+            <p>We're committed to ethical manufacturing and environmentally conscious practices throughout our supply chain.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <section class="featured-products-section fade-in" style="padding:80px 20px;background:linear-gradient(135deg,#f8fafc 0%,#e2e8f0 100%);margin:60px 0;">
+      <div style="max-width:1200px;margin:0 auto;text-align:center;">
+        <h2 style="font-size:clamp(32px,5vw,48px);margin-bottom:16px;color:#1a202c;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Featured Products</h2>
+        <p style="font-size:18px;color:#64748b;max-width:600px;margin:0 auto 60px;">Discover our most popular pieces, carefully curated for quality and style</p>
+        <div class="featured-products-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;">
+          <article class="featured-product-card" style="background:linear-gradient(135deg,#ffffff 0%,#f9f9f9 100%);border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(26,35,126,0.1);transition:all 0.4s ease;animation:slideUp 1s ease-out forwards;opacity:0;animation-fill-mode:forwards;">
+            <div class="image-container" style="position:relative;overflow:hidden;">
+              <img src="Classic Tee.jpg" alt="Classic Tee" style="width:100%;height:250px;object-fit:cover;transition:transform 0.4s ease;">
+              <div class="overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(45deg,rgba(14,165,164,0.1),rgba(32,201,151,0.1));opacity:0;transition:opacity 0.4s ease;"></div>
+            </div>
+            <div class="content" style="padding:24px;text-align:center;">
+              <h3 style="font-size:22px;color:#1a202c;font-weight:700;margin-bottom:8px;">Classic Tee</h3>
+              <p style="color:#64748b;font-size:15px;margin-bottom:16px;">A versatile essential that pairs perfectly with any outfit.</p>
+              <div class="price" style="font-size:20px;font-weight:800;color:var(--accent);margin-bottom:20px;">₱1,624.00</div>
+              <a href="shop.html" class="btn" style="background:linear-gradient(135deg,var(--accent),var(--accent-light));color:white;padding:12px 32px;border-radius:12px;text-decoration:none;font-weight:600;display:inline-block;transition:all 0.3s;">Shop Now</a>
+            </div>
+          </article>
+          <article class="featured-product-card" style="background:linear-gradient(135deg,#ffffff 0%,#f9f9f9 100%);border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(26,35,126,0.1);transition:all 0.4s ease;animation:slideUp 1s ease-out 0.2s forwards;opacity:0;animation-fill-mode:forwards;">
+            <div class="image-container" style="position:relative;overflow:hidden;">
+              <img src="Cozy Hoodie.jpg" alt="Cozy Hoodie" style="width:100%;height:250px;object-fit:cover;transition:transform 0.4s ease;">
+              <div class="overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(45deg,rgba(14,165,164,0.1),rgba(32,201,151,0.1));opacity:0;transition:opacity 0.4s ease;"></div>
+            </div>
+            <div class="content" style="padding:24px;text-align:center;">
+              <h3 style="font-size:22px;color:#1a202c;font-weight:700;margin-bottom:8px;">Cozy Hoodie</h3>
+              <p style="color:#64748b;font-size:15px;margin-bottom:16px;">Stay warm and stylish with our premium hoodie collection.</p>
+              <div class="price" style="font-size:20px;font-weight:800;color:var(--accent);margin-bottom:20px;">₱2,744.00</div>
+              <a href="shop.html" class="btn" style="background:linear-gradient(135deg,var(--accent),var(--accent-light));color:white;padding:12px 32px;border-radius:12px;text-decoration:none;font-weight:600;display:inline-block;transition:all 0.3s;">Shop Now</a>
+            </div>
+          </article>
+          <article class="featured-product-card" style="background:linear-gradient(135deg,#ffffff 0%,#f9f9f9 100%);border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(26,35,126,0.1);transition:all 0.4s ease;animation:slideUp 1s ease-out 0.4s forwards;opacity:0;animation-fill-mode:forwards;">
+            <div class="image-container" style="position:relative;overflow:hidden;">
+              <img src="Joggers.jpg" alt="Joggers" style="width:100%;height:250px;object-fit:cover;transition:transform 0.4s ease;">
+              <div class="overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(45deg,rgba(14,165,164,0.1),rgba(32,201,151,0.1));opacity:0;transition:opacity 0.4s ease;"></div>
+            </div>
+            <div class="content" style="padding:24px;text-align:center;">
+              <h3 style="font-size:22px;color:#1a202c;font-weight:700;margin-bottom:8px;">Joggers</h3>
+              <p style="color:#64748b;font-size:15px;margin-bottom:16px;">Comfortable and trendy joggers for your active lifestyle.</p>
+              <div class="price" style="font-size:20px;font-weight:800;color:var(--accent);margin-bottom:20px;">₱2,184.00</div>
+              <a href="shop.html" class="btn" style="background:linear-gradient(135deg,var(--accent),var(--accent-light));color:white;padding:12px 32px;border-radius:12px;text-decoration:none;font-weight:600;display:inline-block;transition:all 0.3s;">Shop Now</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section fade-in">
+        <!-- Floating Shapes for CTA Section -->
+        <div class="cta-floating-shapes">
+          <div class="cta-shape-1"></div>
+          <div class="cta-shape-2"></div>
+          <div class="cta-shape-3"></div>
+          <div class="cta-shape-4"></div>
+          <div class="cta-shape-5"></div>
+        </div>
+        <h2 style="color:white;text-shadow:0 2px 4px rgba(0,0,0,0.1);font-size:clamp(40px,8vw,60px);font-weight:900;letter-spacing:-1px;">Ready to Find Your FitAura?</h2>
+        <p style="font-style:italic;font-weight:500;text-shadow:0 1px 2px rgba(0,0,0,0.1);font-size:20px;max-width:700px;">Explore our latest collection and discover pieces that match your unique style.</p>
+        <a href="shop.html" class="btn">Start Shopping</a>
+      </section>
+
+    <footer style="background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 100%);color:white;padding:60px 20px 30px;margin-top:0;border-radius:20px 20px 0 0;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 30% 20%, rgba(14,165,164,0.1) 0%, transparent 50%),radial-gradient(circle at 70% 80%, rgba(32,201,151,0.1) 0%, transparent 50%);pointer-events:none;"></div>
+      <div class="container" style="position:relative;z-index:1;max-width:1200px;margin:0 auto;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;margin-bottom:40px;">
+          <div>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+              <div style="width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-light));display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:16px;">FA</div>
+              <div>
+                <div style="font-weight:800;font-size:20px;">FitAura</div>
+                <div style="color:#a1a1a1;font-size:14px;">Be the trend</div>
+              </div>
+            </div>
+            <p style="color:#a1a1a1;line-height:1.6;margin-bottom:20px;">Discover timeless pieces that blend modern design with uncompromising comfort. FitAura brings you quality essentials and streetwear.</p>
+            <div style="display:flex;gap:16px;">
+              <a href="https://instagram.com/fitaura" style="color:#a1a1a1;text-decoration:none;font-size:16px;font-weight:600;transition:color 0.3s;" aria-label="Instagram">IG</a>
+              <a href="https://twitter.com/fitaura" style="color:#a1a1a1;text-decoration:none;font-size:16px;font-weight:600;transition:color 0.3s;" aria-label="Twitter">X</a>
+              <a href="https://facebook.com/fitaura" style="color:#a1a1a1;text-decoration:none;font-size:16px;font-weight:600;transition:color 0.3s;" aria-label="Facebook">FB</a>
+            </div>
+          </div>
+          <div>
+            <h4 style="font-size:18px;margin-bottom:20px;font-weight:700;">Quick Links</h4>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <a href="shop.html" style="color:#a1a1a1;text-decoration:none;font-size:14px;transition:color 0.3s;">Shop</a>
+              <a href="about.html" style="color:#a1a1a1;text-decoration:none;font-size:14px;transition:color 0.3s;">About</a>
+              <a href="#" style="color:#a1a1a1;text-decoration:none;font-size:14px;transition:color 0.3s;">Contact</a>
+              <a href="#" style="color:#a1a1a1;text-decoration:none;font-size:14px;transition:color 0.3s;">Support</a>
+            </div>
+          </div>
+          <div>
+            <h4 style="font-size:18px;margin-bottom:20px;font-weight:700;">Stay Connected</h4>
+            <p style="color:#a1a1a1;font-size:14px;margin-bottom:16px;">Subscribe to our newsletter for exclusive offers and updates.</p>
+            <form onsubmit="return handleSubscribe(event,this);" style="display:flex;gap:8px;">
+              <input aria-label="email" name="email" placeholder="Your email" style="padding:12px;border-radius:8px;border:1px solid #404040;background:#333;color:white;font-size:14px;flex:1;">
+              <button class="btn" type="submit" style="padding:12px 20px;background:linear-gradient(135deg,var(--accent),var(--accent-light));border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;">Join</button>
+            </form>
+          </div>
+        </div>
+        <div style="border-top:1px solid #404040;padding-top:20px;text-align:center;color:#a1a1a1;font-size:14px;">
+          <p>&copy; 2025 FitAura. All rights reserved. Made with ❤️ for fashion lovers.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('year').textContent=new Date().getFullYear();
+      function handleSubscribe(e, form) {
+        e.preventDefault();
+        var email = (form.querySelector('input[name="email"]')||{}).value || '';
+        var subject = encodeURIComponent('Subscribe to FitAura Newsletter');
+        var body = encodeURIComponent('Please subscribe this email: ' + email);
+        window.location.href = 'mailto:hello@fitaura.com?subject=' + subject + '&body=' + body;
+        return false;
+      }
+      document.addEventListener('DOMContentLoaded', function () {
+        document.body.style.opacity = 0;
+        document.body.style.transition = 'opacity 360ms ease';
+        requestAnimationFrame(function(){ document.body.style.opacity = 1 });
+        var links = document.querySelectorAll('a[href]');
+        links.forEach(function(a){
+          var href = a.getAttribute('href');
+          if (!href) return;
+          if (href.match(/\.html$/) || href.startsWith(window.location.origin) || href.startsWith('./') || href.startsWith('/') ){
+            a.addEventListener('click', function(ev){ if (a.target === '_blank') return; ev.preventDefault(); var dest = a.getAttribute('href'); document.body.style.opacity = 0; setTimeout(function(){ window.location = dest; }, 360); });
+          }
+        });
+      });
+      // highlight active nav link based on current page
+      (function highlightCurrentPage() {
+        var currentFile = window.location.pathname.split('/').pop() || 'index.html';
+        if (currentFile === '' || currentFile === '/') currentFile = 'index.html';
+        var navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(function(link) {
+          link.classList.remove('active');
+          var href = link.getAttribute('href');
+          if (href === currentFile || (currentFile === 'index.html' && href === 'index.html')) {
+            link.classList.add('active');
+          }
+        });
+      })();
+
+      // Trigger product card animations
+      function triggerProductAnimations() {
+        const productCards = document.querySelectorAll('.product-card');
+        productCards.forEach((card, index) => {
+          card.style.setProperty('--delay', index);
+          card.style.animationPlayState = 'running';
+        });
+      }
+
+      // Trigger animations on load
+      window.addEventListener('load', triggerProductAnimations);
+    </script>
+    <script src="assets/js/smooth-scroll.js"></script>
+  </body>
+</html>

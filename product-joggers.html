@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Comfy Joggers — FitAura</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/index.css" />
+    <link rel="stylesheet" href="assets/css/fitaura-responsive.css" />
+    <style>
+      /* Apple-inspired modern design */
+      :root{--accent:#0ea5a4;--accent-light:#20c997;--bg:linear-gradient(135deg,#ffffff 0%,#f9f9f9 100%);--text:#000;--text-secondary:#6f6f6f;--border:#e5e5e5}
+      *{margin:0;padding:0;box-sizing:border-box}
+      html{scroll-behavior:smooth}
+      body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+
+      /* Sticky Navigation */
+      header{position:sticky;top:0;background:rgba(255,255,255,0.8);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 20px;gap:12px}
+      .brand{display:flex;gap:12px;align-items:center}
+      .logo{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-light));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px}
+      .brand-text{display:flex;flex-direction:column}
+      .brand-text strong{font-size:15px}
+      .brand-text small{font-size:11px;color:var(--text-secondary)}
+
+      nav{display:flex;gap:8px}
+      .nav-link{color:var(--text);text-decoration:none;padding:8px 12px;border-radius:8px;font-size:14px;transition:background 0.3s}
+      .nav-link:hover{background:#f5f5f5}
+      .nav-link.active{color:var(--accent);font-weight:500}
+
+      /* Hero Sections - Apple style */
+      .hero-section{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:80px 20px;text-align:center;position:relative;overflow:hidden}
+      .hero-section.hero-main{background:linear-gradient(135deg,#ffffff 0%,#f9f9f9 100%)}
+      .hero-section.hero-secondary{background:#f5f5f5}
+      .hero-section h1{font-size:clamp(32px,8vw,64px);font-weight:700;margin-bottom:16px;line-height:1.2}
+      .hero-section p{font-size:clamp(16px,3vw,21px);color:var(--text-secondary);max-width:600px;margin:0 auto 32px}
+
+      .hero-content{display:flex;align-items:center;justify-content:center;gap:40px;max-width:1200px;width:100%;margin:0 auto}
+      .hero-text{flex:1;text-align:left}
+      .hero-image{flex:1;text-align:center}
+      .hero-image img{max-width:100%;height:auto;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.1);animation:float 3s ease-in-out infinite}
+
+      @keyframes float{0%,100%{transform:translateY(0px)}50%{transform:translateY(-10px)}}
+      @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+      .hero-text h1{text-align:left}
+      .hero-text p{text-align:left}
+
+      .btn{display:inline-block;padding:12px 24px;background:var(--accent);color:white;border-radius:8px;text-decoration:none;font-weight:500;transition:all 0.3s;font-size:15px;border:none;cursor:pointer}
+      .btn:hover{background:var(--accent-light);transform:scale(1.05)}
+      .btn-outline{background:transparent;border:2px solid var(--accent);color:var(--accent)}
+      .btn-outline:hover{background:var(--accent);color:white}
+
+      .btn-group{display:flex;gap:12px;margin-top:24px;justify-content:center}
+      .hero-text .btn-group{justify-content:flex-start}
+
+      /* Footer */
+      footer{background:#000;color:white;padding:60px 20px 20px;text-align:center}
+      footer .container{max-width:1200px;margin:0 auto}
+      .footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;margin-bottom:40px;text-align:left}
+      .footer-section h4{margin-bottom:16px;font-size:15px}
+      .footer-section a{color:#a1a1a1;text-decoration:none;display:block;margin-bottom:8px;font-size:13px;transition:color 0.3s}
+      .footer-section a:hover{color:white}
+      .footer-bottom{border-top:1px solid #424245;padding-top:20px;font-size:12px;color:#a1a1a1}
+
+      /* Layout refinements for more dynamic, Apple-style look */
+      .hero-section.hero-main {
+        padding: 64px 0 32px 0;
+        min-height: 80vh;
+      }
+      .hero-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 48px;
+      }
+      .hero-text {
+        flex: 1;
+        text-align: left;
+        padding-right: 32px;
+      }
+      .hero-text h1 {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        margin-bottom: 18px;
+      }
+      .hero-text p {
+        font-size: 1.25rem;
+        color: #4b5563;
+        margin-bottom: 32px;
+      }
+      .btn-group {
+        display: flex;
+        gap: 16px;
+      }
+      .hero-image {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .hero-image img {
+        width: 100%;
+        max-width: 420px;
+        border-radius: 18px;
+        box-shadow: 0 8px 40px rgba(26,35,126,0.10);
+      }
+      @media(max-width: 900px) {
+        .hero-content {
+          flex-direction: column;
+          gap: 32px;
+        }
+        .hero-text {
+          text-align: center;
+          padding-right: 0;
+        }
+        .btn-group {
+          justify-content: center;
+        }
+      }
+      @media(max-width: 768px){
+        .hero-section.hero-main {
+          padding: 32px 0 16px 0;
+        }
+        header{flex-direction:column;gap:16px}
+        nav{flex-wrap:wrap;justify-content:center}
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <div class="logo">FA</div>
+        <div class="brand-text">
+          <strong>FitAura</strong>
+          <small>Be the trend</small>
+        </div>
+      </div>
+
+      <nav style="display:flex;gap:8px;align-items:center;">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="shop.html">Shop</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="login.html">Login</a>
+      </nav>
+      <a href="signup.html" class="btn btn-primary btn-lg" style="margin-left:18px;box-shadow:0 4px 24px #0ea5a422;min-width:140px;text-align:center;padding:14px 28px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-light));font-weight:600;font-size:16px;">Sign Up</a>
+    </header>
+
+    <main>
+      <!-- Product Hero Section -->
+      <section class="hero-section hero-main fade-in">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>Comfy Joggers</h1>
+            <p>Soft, tapered joggers designed for movement and everyday comfort. Elastic waist with drawcord.</p>
+            <div class="btn-group">
+              <span style="font-weight:700;font-size:20px;color:var(--accent);margin-right:18px;">$39.00</span>
+              <a class="btn" href="#">Add to cart</a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <img src="Joggers.jpg" alt="Comfy Joggers">
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer style="background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 100%);color:white;padding:60px 20px 30px;margin-top:60px;border-radius:20px 20px 0 0;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 30% 20%, rgba(14,165,164,0.1) 0%, transparent 50%),radial-gradient(circle at 70% 80%, rgba(32,201,151,0.1) 0%, transparent 50%);pointer-events:none;"></div>
+      <div class="container" style="position:relative;z-index:1;max-width:1200px;margin:0 auto;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;margin-bottom:40px;">
+          <div>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+              <div style="width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-light));display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:16px;">FA</div>
+              <div>
+                <div style="font-weight:800;font-size:20px;">FitAura</div>
+                <div style="color:#a1a1a1;font-size:14px;">Be the trend</div>
+              </div>
+            </div>
+            <p style="color:#a1a1a1;line-height:1.6;margin-bottom:20px;">Discover timeless pieces that blend modern design with uncompromising comfort. FitAura brings you quality essentials and streetwear.</p>
+            <div style="display:flex;gap:16px;">
+              <a href="https://instagram.com/fitaura" style="color:#a1a1a1;text-decoration:none;font-size:20px;transition:color 0.3s;" aria-label="Instagram">📷</a>
+              <a href="https://twitter.com/fitaura" style="color:#a1a1a1;text-decoration:none;font-size:20px;transition:color 0.3s;" aria-label="Twitter">🐦</a>
+              <a href="https://facebook.com/fitaura" style="color:#a1a1a1;text-decoration:none;font-size:20px;transition:color 0.3s;" aria-label="Facebook">📘</a>
+            </div>
+          </div>
+          <div>
+            <h4 style="font-size:18px;margin-bottom:20px;font-weight:700;">Quick Links</h4>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <a href="shop.html" style="color:#a1a1a1;text-decoration:none;font-size:14px;transition:color 0.3s;">Shop</a>
+              <a href="about.html" style="color:#a1a1a1;text-decoration:none;font-size:14px;transition:color 0.3s;">About</a>
+              <a href="#" style="color:#a1a1a1;text-decoration:none;font-size:14px;transition:color 0.3s;">Contact</a>
+              <a href="#" style="color:#a1a1a1;text-decoration:none;font-size:14px;transition:color 0.3s;">Support</a>
+            </div>
+          </div>
+          <div>
+            <h4 style="font-size:18px;margin-bottom:20px;font-weight:700;">Stay Connected</h4>
+            <p style="color:#a1a1a1;font-size:14px;margin-bottom:16px;">Subscribe to our newsletter for exclusive offers and updates.</p>
+            <form onsubmit="return handleSubscribe(event,this);" style="display:flex;gap:8px;">
+              <input aria-label="email" name="email" placeholder="Your email" style="padding:12px;border-radius:8px;border:1px solid #404040;background:#333;color:white;font-size:14px;flex:1;">
+              <button class="btn" type="submit" style="padding:12px 20px;background:linear-gradient(135deg,var(--accent),var(--accent-light));border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;">Join</button>
+            </form>
+          </div>
+        </div>
+        <div style="border-top:1px solid #404040;padding-top:20px;text-align:center;color:#a1a1a1;font-size:14px;">
+          <p>&copy; 2025 FitAura. All rights reserved. Made with ❤️ for fashion lovers.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/smooth-scroll.js"></script>
+    <script>
+      // Highlight active nav link based on current page
+      document.addEventListener('DOMContentLoaded', function () {
+        var currentFile = window.location.pathname.split('/').pop() || 'index.html';
+        if (currentFile === '' || currentFile === '/') currentFile = 'index.html';
+        var navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(function(link) {
+          link.classList.remove('active');
+          var href = link.getAttribute('href');
+          if (href === currentFile || (currentFile === 'index.html' && href === 'index.html')) {
+            link.classList.add('active');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

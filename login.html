@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login — FitAura</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/index.css" />
+  <link rel="stylesheet" href="assets/css/fitaura-responsive.css" />
+    <style>
+      :root{--accent:#0ea5a4;--accent-light:#20c997;--bg:linear-gradient(135deg,#ffffff 0%,#f9f9f9 100%);--text:#000;--text-secondary:#6f6f6f;--border:#e5e5e5}
+      *{margin:0;padding:0;box-sizing:border-box}
+      html{scroll-behavior:smooth}
+      body{font-family:'Inter',sans-serif;background:linear-gradient(135deg, #e3e8f5 0%, #fff 100%);color:var(--text)}
+      
+      /* Sticky Navigation */
+      header{position:sticky;top:0;background:rgba(255,255,255,0.8);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 20px;gap:12px}
+      .brand{display:flex;gap:12px;align-items:center}
+      .logo{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-light));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px}
+      .brand-text{display:flex;flex-direction:column}
+      .brand-text strong{font-size:15px}
+      .brand-text small{font-size:11px;color:var(--text-secondary)}
+      
+      nav{display:flex;gap:8px}
+      .nav-link{color:var(--text);text-decoration:none;padding:8px 12px;border-radius:8px;font-size:14px;transition:background 0.3s}
+      .nav-link:hover{background:#f5f5f5}
+      .nav-link.active{color:var(--accent);font-weight:500}
+      
+      .container{max-width:1100px;margin:0 auto;padding:40px 20px}
+      main{display:flex;justify-content:center;align-items:center;min-height:calc(100vh - 80px);margin:0;padding:40px 20px}
+      .login-card {
+        background: white;
+        padding: 48px 28px 36px 28px;
+        border-radius: 22px;
+        box-shadow: 0 8px 40px rgba(26,35,126,0.13);
+        max-width: 400px;
+        width: 100%;
+        border: 1.5px solid #e3e8f5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        animation: fadeInUp 0.8s cubic-bezier(.23,1.01,.32,1) both;
+      }
+      .login-card h1 {
+        margin: 0 0 8px 0;
+        font-size: 2.1rem;
+        color: var(--text);
+        font-weight: 700;
+        letter-spacing: -1px;
+      }
+      .login-card p {
+        margin: 0 0 32px 0;
+        color: #6b7280;
+        font-size: 1rem;
+      }
+      .form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+      }
+      .field label {
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: var(--text);
+        font-size: 15px;
+      }
+      input {
+        padding: 14px;
+        border: 2px solid #e5e7eb;
+        border-radius: 9px;
+        font-size: 15px;
+        transition: all 0.2s ease;
+        font-family: inherit;
+        background: #f8fafc;
+      }
+      input:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(26,35,126,0.08);
+      }
+      input::placeholder {
+        color: #bfc6d1;
+      }
+      .btn {
+        display: inline-block;
+        padding: 14px 0;
+        background: var(--accent);
+        color: white;
+        border-radius: 9px;
+        text-decoration: none;
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-size: 15px;
+        box-shadow: 0 2px 8px rgba(26,35,126,0.07);
+        margin-top: 8px;
+      }
+      .btn:hover {
+        background: #3949ab;
+        transform: scale(1.04);
+        box-shadow: 0 6px 20px rgba(26,35,126,0.13);
+      }
+      .btn:active {
+        transform: translateY(0);
+      }
+      .signup-link {
+        text-align: center;
+        margin-top: 20px;
+        color: #6b7280;
+        font-size: 14px;
+      }
+      .signup-link a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s ease;
+      }
+      .signup-link a:hover {
+        color: #3949ab;
+        text-decoration: underline;
+      }
+      @media (max-width: 600px) {
+        .login-card {
+          padding: 28px 4vw 24px 4vw;
+          border-radius: 14px;
+        }
+        .login-card h1 {
+          font-size: 1.5rem;
+        }
+      }
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(32px); }
+        to { opacity: 1; transform: none; }
+      }
+      footer {
+        margin-top: 60px;
+        padding-top: 24px;
+        border-top: 1px solid #e6e6e6;
+        text-align: center;
+        color: #6b7280;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <div class="logo">FA</div>
+        <div class="brand-text">
+          <strong>FitAura</strong>
+          <small>Be the trend</small>
+        </div>
+      </div>
+
+      <nav style="display:flex;gap:8px;align-items:center;">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="shop.html">Shop</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="login.html">Login</a>
+      </nav>
+      <a href="signup.html" class="btn btn-primary btn-lg" style="margin-left:18px;box-shadow:0 4px 24px #0ea5a422;min-width:140px;text-align:center;padding:14px 28px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-light));font-weight:600;font-size:16px;">Sign Up</a>
+    </header>
+    <main>
+      <section class="hero-section hero-main fade-in" style="display:flex;align-items:center;justify-content:center;min-height:100vh;padding:0;">
+        <div class="login-card">
+          <h1>Welcome Back</h1>
+          <p>Sign in to your FitAura account</p>
+          <form class="form" onsubmit="event.preventDefault(); alert('Logged in (static demo)'); window.location='index.html';">
+            <div class="field">
+              <label>Email Address</label>
+              <input type="email" placeholder="your@email.com" required />
+            </div>
+            <div class="field">
+              <label>Password</label>
+              <input type="password" placeholder="Enter your password" required />
+            </div>
+            <button class="btn" type="submit">Sign In</button>
+            <div class="signup-link">
+              Don't have an account? <a href="signup.html">Sign up here</a>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer style="background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 100%);color:white;padding:60px 20px 30px;margin-top:60px;border-radius:20px 20px 0 0;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 30% 20%, rgba(14,165,164,0.1) 0%, transparent 50%),radial-gradient(circle at 70% 80%, rgba(32,201,151,0.1) 0%, transparent 50%);pointer-events:none;"></div>
+      <div class="container" style="position:relative;z-index:1;max-width:1200px;margin:0 auto;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;margin-bottom:40px;">
+          <div>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+              <div style="width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-light));display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:16px;">FA</div>
+              <div>
+                <div style="font-weight:800;font-size:20px;">FitAura</div>
+                <div style="color:#a1a1a1;font-size:14px;">Be the trend</div>
+              </div>
+            </div>
+            <p style="color:#a1a1a1;line-height:1.6;margin-bottom:20px;">Discover timeless pieces that blend modern design with uncompromising comfort. FitAura brings you quality essentials and streetwear.</p>
+            <div style="display:flex;gap:16px;">
+              <a href="https://instagram.com/fitaura" style="color:#a1a1a1;text-decoration:none;font-size:20px;transition:color 0.3s;" aria-label="Instagram">📷</a>
+              <a href="https://twitter.com/fitaura" style="color:#a1a1a1;text-decoration:none;font-size:20px;transition:color 0.3s;" aria-label="Twitter">🐦</a>
+              <a href="https://facebook.com/fitaura" style="color:#a1a1a1;text-decoration:none;font-size:20px;transition:color 0.3s;" aria-label="Facebook">📘</a>
+            </div>
+          </div>
+          <div>
+            <h4 style="font-size:18px;margin-bottom:20px;font-weight:700;">Quick Links</h4>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <a href="shop.html" style="color:#a1a1a1;text-decoration:none;font-size:14px;transition:color 0.3s;">Shop</a>
+              <a href="about.html" style="color:#a1a1a1;text-decoration:none;font-size:14px;transition:color 0.3s;">About</a>
+              <a href="#" style="color:#a1a1a1;text-decoration:none;font-size:14px;transition:color 0.3s;">Contact</a>
+              <a href="#" style="color:#a1a1a1;text-decoration:none;font-size:14px;transition:color 0.3s;">Support</a>
+            </div>
+          </div>
+          <div>
+            <h4 style="font-size:18px;margin-bottom:20px;font-weight:700;">Stay Connected</h4>
+            <p style="color:#a1a1a1;font-size:14px;margin-bottom:16px;">Subscribe to our newsletter for exclusive offers and updates.</p>
+            <form onsubmit="return handleSubscribe(event,this);" style="display:flex;gap:8px;">
+              <input aria-label="email" name="email" placeholder="Your email" style="padding:12px;border-radius:8px;border:1px solid #404040;background:#333;color:white;font-size:14px;flex:1;">
+              <button class="btn" type="submit" style="padding:12px 20px;background:linear-gradient(135deg,var(--accent),var(--accent-light));border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;">Join</button>
+            </form>
+          </div>
+        </div>
+        <div style="border-top:1px solid #404040;padding-top:20px;text-align:center;color:#a1a1a1;font-size:14px;">
+          <p>&copy; 2025 FitAura. All rights reserved. Made with ❤️ for fashion lovers.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/smooth-scroll.js"></script>
+    <script>
+      // Highlight active nav link based on current page
+      document.addEventListener('DOMContentLoaded', function () {
+        var currentFile = window.location.pathname.split('/').pop() || 'index.html';
+        if (currentFile === '' || currentFile === '/') currentFile = 'index.html';
+        var navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(function(link) {
+          link.classList.remove('active');
+          var href = link.getAttribute('href');
+          if (href === currentFile || (currentFile === 'index.html' && href === 'index.html')) {
+            link.classList.add('active');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
